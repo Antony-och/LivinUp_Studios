@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gallery | Livin Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="gallery">
+  <div class="frame">
+    <!-- SITE HEADER / NAVIGATION -->
+    <header class="fnav" id="fnav">
+      <a class="fb" href="index.html" aria-label="Livin Up home"><img data-markimg alt=""><b>LIVIN UP</b></a>
+      <button class="burger" id="bg" type="button" aria-expanded="false" aria-controls="fl">Menu</button>
+      <nav id="fl" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="work.html">Work</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="studio.html">Studio</a>
+        <a class="cta" href="contact.html">Partner with us</a>
+      </nav>
+    </header>
+
+    <!-- PAGE MAIN CONTENT -->
+    <main class="main">
+      <!-- PAGE INTRO -->
+      <section class="page-intro" id="gallery-intro">
+        <h2>Gallery</h2>
+        <p>Photographs, film stills and design work. Select a piece to view it larger.</p>
+      </section>
+
+      <!-- GALLERY CONTENT -->
+      <section class="page-shell" id="gallery-content">
+        <div class="gbar">
+          <div class="filt" id="filt" role="group" aria-label="Filter gallery"></div>
+          <p class="gc" id="gc" aria-live="polite"></p>
+        </div>
+        <div class="mz" id="gal"></div>
+        <dialog id="lb" aria-label="Gallery viewer">
+          <div id="lbc"></div>
+          <div class="lbn">
+            <button class="btn w2" id="lbp" type="button">Previous</button>
+            <span id="lbi"></span>
+            <button class="btn w2" id="lbnx" type="button">Next</button>
+            <button class="btn" id="lbx" type="button">Close</button>
+          </div>
+        </dialog>
+      </section>
+    </main>
+
+    <!-- SITE FOOTER -->
+    <footer id="site-footer">
+      <div class="footer-brand">
+        <img class="footer-brand-mark" src="img/livingup_logo.png" alt="Livin Up logo">
+        <p class="brand-line">Art, culture, and people — shaped into stories that feel lived in.</p>
+        <a class="footer-cta" href="contact.html">Book a discovery call</a>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-meta">
+          <h4>Follow us</h4>
+          <div class="soc">
+            <a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/livinupke/" target="_blank" rel="noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://www.youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-meta">
+          <h4>Explore</h4>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="index.html">About</a>
+            <a href="work.html">Portfolio</a>
+            <a href="services.html">Services</a>
+            <a href="studio.html">Blog</a>
+            <a href="contact.html">FAQs</a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <div class="contact-item"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><a href="https://maps.google.com" target="_blank" rel="noreferrer">Map area ini<br>Elercation</a></div>
+        <div class="contact-item"><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:+254700000000">+254 700 000 000</a></div>
+        <div class="contact-item"><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:hello@livinup.com">hello@livinup.com</a></div>
+      </div>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

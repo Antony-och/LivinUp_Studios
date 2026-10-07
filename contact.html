@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Contact | Livin Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="contact">
+  <div class="frame">
+    <!-- SITE HEADER / NAVIGATION -->
+    <header class="fnav" id="fnav">
+      <a class="fb" href="index.html" aria-label="Livin Up home"><img data-markimg alt=""><b>LIVIN UP</b></a>
+      <button class="burger" id="bg" type="button" aria-expanded="false" aria-controls="fl">Menu</button>
+      <nav id="fl" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="work.html">Work</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="studio.html">Studio</a>
+        <a class="cta" href="contact.html">Partner with us</a>
+      </nav>
+    </header>
+
+    <!-- PAGE MAIN CONTENT -->
+    <main class="main">
+      <!-- PAGE INTRO -->
+      <section class="page-intro" id="contact-intro">
+        <h2>Let’s tell your story together</h2>
+        <p>Fill in the form, or call us. We reply within two working days and can usually advise on scope and timing the same week.</p>
+      </section>
+
+      <!-- CONTACT FORM / DETAILS -->
+      <section class="page-shell" id="contact-form-area">
+        <div class="cx" id="ct">
+          <form class="f letter" id="cf" novalidate>
+            <p class="ln">Hello Livin Up, my name is <input name="n" size="10" required autocomplete="name" aria-label="Your name" placeholder="your name"> and I work with <input name="o" size="12" autocomplete="organization" aria-label="Organisation, optional" placeholder="organisation">.<span class="er" hidden>Enter your name.</span></p>
+            <fieldset class="ln"><legend>We would like help with</legend><div class="chips"><label><input type="checkbox" name="s" value="Brand photography"><span>Brand photography</span></label><label><input type="checkbox" name="s" value="Cultural videography"><span>Cultural videography</span></label><label><input type="checkbox" name="s" value="Strategic design"><span>Strategic design</span></label><label><input type="checkbox" name="s" value="Not sure yet"><span>Not sure yet</span></label></div></fieldset>
+            <p class="ln">Our project is about<textarea name="m" rows="3" required aria-label="About your project" placeholder="Who is it for, and what should people feel when they see it?"></textarea><span class="er" hidden>Tell us a little about your project.</span></p>
+            <p class="ln">Our budget is <select name="b" aria-label="Rough budget"><option>not sure yet</option><option>under KES 100,000</option><option>KES 100,000 to 300,000</option><option>over KES 300,000</option></select> and we would like to start <select name="w" aria-label="When do you need it"><option>whenever suits</option><option>within a month</option><option>within three months</option><option>on a set date</option></select>.</p>
+            <p class="ln">You can reach me at <input name="e" type="email" size="17" required autocomplete="email" aria-label="Email" placeholder="email address"> or on <input name="p" type="tel" size="11" autocomplete="tel" aria-label="Phone, optional" placeholder="phone">.<span class="er" hidden>Enter a valid email address.</span></p>
+            <p class="ln">Thank you, and I look forward to hearing from you.</p>
+            <button class="btn" type="submit">Prepare my message</button>
+          </form>
+
+          <aside class="rail">
+            <h3>Prefer to talk?</h3>
+            <a class="big" href="tel:+254700000000">+254 700 000 000</a>
+            <a class="big" href="mailto:hello@livinup.com">hello@livinup.com</a>
+            <button type="button" class="cp">Copy email address</button>
+            <ol class="tl">
+              <li><b>We reply</b>Within two working days.</li>
+              <li><b>We talk</b>A short call about your project.</li>
+              <li><b>We propose</b>A plan, a timeline and a quote.</li>
+            </ol>
+            <div class="soc"><a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a><a href="https://www.instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="https://www.youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a><a href="https://www.linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></div>
+          </aside>
+        </div>
+
+        <div class="ok" id="ok" role="status" hidden>
+          <h3>Your message is ready</h3>
+          <p>Send it from your email app to reach us at hello@livinup.com. We reply within two working days.</p>
+          <p><a class="btn" id="mt" href="#">Open in email app</a> <button class="btn w2" type="button" id="ed">Edit message</button></p>
+        </div>
+      </section>
+    </main>
+
+    <!-- SITE FOOTER -->
+    <footer id="site-footer">
+      <div class="footer-brand">
+        <img class="footer-brand-mark" src="img/livingup_logo.png" alt="Livin Up logo">
+        <p class="brand-line">Art, culture, and people — shaped into stories that feel lived in.</p>
+        <a class="footer-cta" href="contact.html">Book a discovery call</a>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-meta">
+          <h4>Follow us</h4>
+          <div class="soc">
+            <a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/livinupke/" target="_blank" rel="noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://www.youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-meta">
+          <h4>Explore</h4>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="index.html">About</a>
+            <a href="work.html">Portfolio</a>
+            <a href="services.html">Services</a>
+            <a href="studio.html">Blog</a>
+            <a href="contact.html">FAQs</a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <div class="contact-item"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><a href="https://maps.google.com" target="_blank" rel="noreferrer">Map area ini<br>Elercation</a></div>
+        <div class="contact-item"><i class="fa-solid fa-phone" aria-hidden="true"></i><a href="tel:+254700000000">+254 700 000 000</a></div>
+        <div class="contact-item"><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:hello@livinup.com">hello@livinup.com</a></div>
+      </div>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
