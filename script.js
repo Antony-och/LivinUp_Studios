@@ -392,61 +392,95 @@ caseStudyModal?.addEventListener('keydown', (event) => {
 // ============================
 // GALLERY DATA / LIGHTBOX
 // ============================
-const G = [
-  ['Kigumo hospitality portrait', 'Photography', '#ee3524', '#efb91f'],
-  ['Kericho tea field film', 'Film', '#a98b74', '#2b2a74'],
-  ['Mombasa beadwork detail', 'Photography', '#2b2a74', '#efb91f'],
-  ['Nairobi market day', 'Film', '#6abf69', '#ee3524'],
-  ['Lodge identity system', 'Design', '#2b2a74', '#efb91f'],
-  ['Kisumu café portraits', 'Photography', '#5e4430', '#e8e2d8'],
-  ['Kisii weaving story', 'Film', '#ee3524', '#6abf69'],
-  ['Meru merch collection', 'Design', '#17120e', '#efb91f'],
-  ['Mau pop-up catalogue', 'Design', '#efb91f', '#2b2a74'],
-  ['Nakuru dance rehearsal', 'Film', '#2b2a74', '#ee3524'],
-  ['Kajiado artisan hands', 'Photography', '#8b7a63', '#6abf69'],
-  ['Laikipia packaging set', 'Design', '#6abf69', '#2b2a74']
+const firstCupShots = [
+  'img/firstcup/Coffee%20is%20more%20than%20a%20drink,%20its%20a%20language%20of%20flavour.%20Each%20roast%20speaks%20with%20its%20unique%20aroma,%20(1).jpg',
+  'img/firstcup/Coffee%20is%20more%20than%20a%20drink,%20its%20a%20language%20of%20flavour.%20Each%20roast%20speaks%20with%20its%20unique%20aroma,%20(2).jpg',
+  'img/firstcup/Coffee%20is%20more%20than%20a%20drink,%20its%20a%20language%20of%20flavour.%20Each%20roast%20speaks%20with%20its%20unique%20aroma,%20(3).jpg',
+  'img/firstcup/Coffee%20is%20more%20than%20a%20drink,%20its%20a%20language%20of%20flavour.%20Each%20roast%20speaks%20with%20its%20unique%20aroma,%20(4).jpg',
+  'img/firstcup/Coffee%20is%20more%20than%20a%20drink,%20its%20a%20language%20of%20flavour.%20Each%20roast%20speaks%20with%20its%20unique%20aroma,.jpg'
 ];
+const njiruShots = [
+  'img/Njiru/BTS%20moments%20from%20my%20perspective%20during%20the%20recce.I%20got%20to%20document%20the%20process%20and%20moments%20that%20%20(1).jpg',
+  'img/Njiru/BTS%20moments%20from%20my%20perspective%20during%20the%20recce.I%20got%20to%20document%20the%20process%20and%20moments%20that%20%20(2).jpg',
+  'img/Njiru/BTS%20moments%20from%20my%20perspective%20during%20the%20recce.I%20got%20to%20document%20the%20process%20and%20moments%20that%20%20(3).jpg',
+  'img/Njiru/BTS%20moments%20from%20my%20perspective%20during%20the%20recce.I%20got%20to%20document%20the%20process%20and%20moments%20that%20%20(4).jpg',
+  'img/Njiru/BTS%20moments%20from%20my%20perspective%20during%20the%20recce.I%20got%20to%20document%20the%20process%20and%20moments%20that%20%20(5).jpg',
+  'img/Njiru/BTS%20moments%20from%20my%20perspective%20during%20the%20recce.I%20got%20to%20document%20the%20process%20and%20moments%20that%20.jpg'
+];
+
+const G = [
+  { title: 'First Cup Coffee & Tea', category: 'Photography', colors: ['#ee3524', '#efb91f'], shots: firstCupShots },
+  { title: 'N’jiru BTS shoot', category: 'Film', colors: ['#2b2a74', '#efb91f'], shots: njiruShots }
+];
+
 const shape = (type) => type === 'Film'
   ? '<path d="M38 28 74 50 38 72z" fill="#fff"/>'
-  : type === 'Photography'
-    ? '<circle cx="50" cy="50" r="24" fill="#17120e" opacity=".8"/><circle cx="50" cy="50" r="11" fill="#fff"/>'
-    : '<path d="M50 14 86 50 50 86 14 50z" fill="#17120e" opacity=".8"/><path d="M50 32 68 50 50 68 32 50z" fill="#fff"/>';
-const art = (g) => `<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${g[0]}"><rect width="100" height="100" fill="${g[2]}"/><path d="M0 100 100 0v40L40 100z" fill="${g[3]}" opacity=".85"/>${shape(g[1])}</svg>`;
+  : '<circle cx="50" cy="50" r="24" fill="#17120e" opacity=".8"/><circle cx="50" cy="50" r="11" fill="#fff"/>';
+const art = (item) => `<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${item.title}"><rect width="100" height="100" fill="${item.colors[0]}"/><path d="M0 100 100 0v40L40 100z" fill="${item.colors[1]}" opacity=".85"/>${shape(item.category)}</svg>`;
 
 const gallery = document.getElementById('gal');
 if (gallery) {
   let currentFilter = 'All';
   let list = [];
   let activeIndex = 0;
+  let activeShotIndex = 0;
   const filterBar = document.getElementById('filt');
   const countText = document.getElementById('gc');
   const lightbox = document.getElementById('lb');
   const lightboxContent = document.getElementById('lbc');
   const lightboxIndex = document.getElementById('lbi');
 
+  const categories = ['All', ...new Set(G.map((item) => item.category))];
+
   const draw = () => {
-    filterBar.innerHTML = ['All', 'Photography', 'Film', 'Design'].map((type) =>
+    filterBar.innerHTML = categories.map((type) =>
       `<button type="button" aria-pressed="${type === currentFilter}">${type}</button>`
     ).join('');
 
-    list = G.map((g, i) => ({ g, i })).filter((entry) => currentFilter === 'All' || entry.g[1] === currentFilter);
+    list = G.map((g, i) => ({ g, i })).filter((entry) => currentFilter === 'All' || entry.g.category === currentFilter);
     gallery.innerHTML = list.map((entry, k) => `
-      <button type="button" class="${k === 0 ? 'big' : k === 1 ? 'h2' : ''}" data-k="${k}" style="animation-delay:${k * 40}ms">
-        ${art(entry.g)}
-        <span><b>${entry.g[0]}</b>${entry.g[1]}</span>
+      <button type="button" data-k="${k}" style="animation-delay:${k * 40}ms">
+        <img src="${entry.g.shots[0]}" alt="${entry.g.title}" loading="lazy" />
+        <span><b>${entry.g.title}</b>${entry.g.category}</span>
       </button>
     `).join('');
 
-    if (countText) countText.textContent = `${list.length} pieces`;
+    if (countText) countText.textContent = `${list.length} sets`;
   };
 
-  const show = (index) => {
+  const show = (index, shotIndex = 0) => {
     if (!list.length) return;
     activeIndex = (index + list.length) % list.length;
     const item = list[activeIndex].g;
+    const shots = item.shots || [item.image];
+    activeShotIndex = ((shotIndex % shots.length) + shots.length) % shots.length;
+
     if (lightboxContent) {
-      lightboxContent.innerHTML = `${art(item)}<h3 style="margin:0 0 4px;font:400 24px var(--serif)">${item[0]}</h3><p>${item[1]} content from a recent Livin Up campaign, shown here as a live gallery preview.</p>`;
+      lightboxContent.innerHTML = `
+        <div class="gallery-lightbox">
+          <div class="gallery-stage">
+            ${shots.map((src, idx) => `
+              <div class="gallery-slide ${idx === activeShotIndex ? 'is-active' : ''}">
+                <img src="${src}" alt="${item.title} shot ${idx + 1}" loading="eager" />
+              </div>
+            `).join('')}
+          </div>
+          <div class="gallery-meta-row">
+            <button class="btn w2" type="button" data-lightbox-prev="true">Previous</button>
+            <span>${activeShotIndex + 1} / ${shots.length}</span>
+            <button class="btn w2" type="button" data-lightbox-next="true">Next</button>
+          </div>
+          <div class="gallery-caption">
+            <h3>${item.title}</h3>
+            <p>${item.category} set from a recent Livin Up campaign, shown here as a multi-image story sequence.</p>
+          </div>
+        </div>
+      `;
+
+      lightboxContent.querySelector('[data-lightbox-prev]').addEventListener('click', () => show(activeIndex, activeShotIndex - 1));
+      lightboxContent.querySelector('[data-lightbox-next]').addEventListener('click', () => show(activeIndex, activeShotIndex + 1));
     }
+
     if (lightboxIndex) lightboxIndex.textContent = `${activeIndex + 1} of ${list.length}`;
   };
 
@@ -466,15 +500,15 @@ if (gallery) {
     if (lightbox) lightbox.showModal();
   });
 
-  document.getElementById('lbp')?.addEventListener('click', () => show(activeIndex - 1));
-  document.getElementById('lbnx')?.addEventListener('click', () => show(activeIndex + 1));
+  document.getElementById('lbp')?.addEventListener('click', () => show(activeIndex, activeShotIndex - 1));
+  document.getElementById('lbnx')?.addEventListener('click', () => show(activeIndex, activeShotIndex + 1));
   document.getElementById('lbx')?.addEventListener('click', () => lightbox.close());
   lightbox?.addEventListener('click', (event) => {
     if (event.target === lightbox) lightbox.close();
   });
   lightbox?.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowLeft') show(activeIndex - 1);
-    if (event.key === 'ArrowRight') show(activeIndex + 1);
+    if (event.key === 'ArrowLeft') show(activeIndex, activeShotIndex - 1);
+    if (event.key === 'ArrowRight') show(activeIndex, activeShotIndex + 1);
   });
   draw();
 }
@@ -485,7 +519,6 @@ if (gallery) {
 const hero = document.querySelector('.hero');
 if (hero) {
   const slides = [...hero.querySelectorAll('.slide')];
-  const dots = hero.querySelector('.dots');
   const previousButton = hero.querySelector('[data-p]');
   const nextButton = hero.querySelector('[data-n]');
   const pauseButton = hero.querySelector('.pz');
@@ -493,19 +526,11 @@ if (hero) {
   let paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let timer = null;
 
-  const renderDots = () => {
-    if (!dots) return;
-    dots.innerHTML = slides.map((_, index) => `<button class="dot" type="button" aria-label="Slide ${index + 1}"></button>`).join('');
-  };
-
   const goToSlide = (index) => {
     currentSlide = (index + slides.length) % slides.length;
     slides.forEach((slide, idx) => {
       slide.classList.toggle('on', idx === currentSlide);
       slide.setAttribute('aria-hidden', String(idx !== currentSlide));
-    });
-    [...dots.children].forEach((dot, idx) => {
-      dot.setAttribute('aria-current', String(idx === currentSlide));
     });
   };
 
@@ -527,19 +552,12 @@ if (hero) {
     pauseButton.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
   };
 
-  renderDots();
   goToSlide(0);
   updatePauseButton();
   play();
 
   previousButton?.addEventListener('click', () => { goToSlide(currentSlide - 1); play(); });
   nextButton?.addEventListener('click', () => { goToSlide(currentSlide + 1); play(); });
-  dots?.addEventListener('click', (event) => {
-    const btn = event.target.closest('.dot');
-    if (!btn) return;
-    const index = [...dots.children].indexOf(btn);
-    if (index >= 0) { goToSlide(index); play(); }
-  });
   pauseButton?.addEventListener('click', () => {
     paused = !paused;
     updatePauseButton();
